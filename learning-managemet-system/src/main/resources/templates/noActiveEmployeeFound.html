@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
+
+	<style>
+		nav {
+			display: flex;
+			align-items: center;
+			padding: 10px;
+		}
+
+		a {
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+		}
+
+		button a:hover {
+			background-color: rgb(146, 254, 197);
+			border-radius: 8px;
+			color: darkblue;
+			cursor: pointer;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid rgb(255, 255, 0);
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+		.Content {
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+
+	<style>
+		/* Left Pannel Styling */
+		.left-panel {
+			width: 80px;
+			background-color: transparent;
+			position: fixed;
+			top: 80px;
+			left: 20px;
+		}
+
+		.left-panel a :hover {
+			background-color: rgb(183, 255, 255);
+			width: 100px;
+			height: 80px;
+			border-radius: 80px;
+		}
+	</style>
+
+</head>
+
+<body
+	style="background-image: url('https://img.freepik.com/free-photo/abstract-smooth-dark-blue-with-black-vignette-studio-well-use-as-backgroundbusiness-reportdigitalweb_1258-57184.jpg?w=1060&t=st=1694774338~exp=1694774938~hmac=84a20ab3048ef98074101b98e4fb6e9a9ca857a51d55ff38a732db0620f48e60'); background-attachment: fixed; background-repeat: no-repeat; background-size: 100%;">
+	<nav>
+		<span><button class="transparent-textfield"><a href="./adminPage">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+		<span>
+			<!-- Global search panel -->
+			<form action="" method="" style="display: flex; align-items: center; margin-left: 500px; ">
+				<input type="text" class="transparent-textfield" name="query" id="search-input"
+					placeholder="Enter your search query">
+				<button style="background-color: rgb(174, 255, 228);" class="transparent-textfield" type="submit"
+					id="search-button">Search</button>
+			</form>
+		</span>
+		<span><button class="transparent-textfield" style="margin-left: 150px;"><a
+					href="/logout">LogOut</a></button></span>
+	</nav>
+	<div class="left-panel">
+		<a href="./requestedEmployees">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set129/20191c9b.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Requests
+		</a>
+		<br><br>
+		<a href="./approvedEmployees">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set76/eaafc3fb.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Employees
+		</a>
+		<br><br>
+		<a href="./getAllMentors">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set60/e5b019f8.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Mentors
+		</a>
+		<br><br>
+		<a href="./getBatchDetails">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set54/d9a8ad.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Batches
+		</a>
+	</div>
+
+	<div class="Content">
+		
+		<div style="color:aliceblue; font-style: oblique;">
+			<br><br><br><br><br><br><br>
+			<h1>Employees aren't Approved Yet  !!</h1>
+			<h2 style="color: rgb(255, 255, 0);">Please wait till approval...</h2>
+		</div>
+	</div>
+
+</body>
+
+</html>

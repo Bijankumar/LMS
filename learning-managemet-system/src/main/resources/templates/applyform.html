@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Apply</title>
+
+	<style>
+		nav {
+			background-color: rgb(0, 0, 91);
+			position: fixed;
+			display: flex;
+			align-items: center;
+			padding: 10px;
+			opacity: 1500px;
+			width: 98%;
+			border-radius: 10px;
+		}
+
+		a {
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+		}
+
+		button a:hover {
+			background-color: rgb(128, 255, 0);
+			border-radius: 8px;
+			color: darkblue;
+			cursor: pointer;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid rgb(128, 255, 255);
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+
+		.application input {
+			background: transparent;
+			border: 2px solid rgb(64, 0, 64);
+			font-size: 15px;
+			height: 25px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+
+		.space {
+			width: 120px;
+		}
+	</style>
+
+</head>
+
+<body
+	style="background-image: url(''); background-attachment: fixed; background-repeat: no-repeat; background-size: 100%;">
+	<nav>
+		<span><button class="transparent-textfield"><a href="./">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+	</nav>
+
+	<div class="application"
+		style="font-size: 17px; position: absolute; top: 105px; left: 125px; color: rgb(0, 0, 64);">
+		<form action="/application" method="post">
+			<h3>Primary Information </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="employeeName">Employee Name</label>
+						<input type="text" id="employeeName" name="employeeName" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="employeeGender">Gender</label>
+						<input type="text" id="employeeGender" name="employeeGender" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="employeeDateOfBirth">D.O.B</label>
+						<input type="date" id="employeeDateOfBirth" name="employeeDateOfBirth" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="employeeEmail">Email </label>
+						<input type="email" id="employeeEmail" name="employeeEmail" required>
+					</td>
+
+				</tr>
+				<!--===========Second Line============-->
+				<tr>
+					<td>
+						<label for="employeeBloodGroup">Blood Group</label>
+						<input type="text" id="employeeBloodGroup" name="employeeBloodGroup" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="employeeNationality">Nationality</label>
+						<input type="text" id="employeeNationality" name="employeeNationality" required>
+					</td>
+
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Secondary Information </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="secondaryInfo.employeePanNumber">PAN</label>
+						<input type="text" id="secondaryInfo.employeePanNumber" name="secondaryInfo.employeePanNumber" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="secondaryInfo.employeeAdharNumber">Aadhar</label>
+						<input type="text" id="secondaryInfo.employeeAdharNumber" name="secondaryInfo.employeeAdharNumber" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="secondaryInfo.employeeFatherName">Father's Name</label>
+						<input type="text" id="secondaryInfo.employeeFatherName" name="secondaryInfo.employeeFatherName" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="secondaryInfo.employeeMotherName">Mother's Name</label>
+						<input type="text" id="secondaryInfo.employeeMotherName" name="secondaryInfo.employeeMotherName" required>
+					</td>
+
+				</tr>
+				<!--===========Second Line============-->
+				<tr>
+					<td>
+						<label for="secondaryInfo.employeeSpouseName">Spouse Name</label>
+						<input type="text" id="secondaryInfo.employeeSpouseName" name="secondaryInfo.employeeSpouseName">
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="secondaryInfo.employeePassportNumber">Passport</label>
+						<input type="text" id="secondaryInfo.employeePassportNumber" name="secondaryInfo.employeePassportNumber" >
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="secondaryInfo.employeeMaritalStatus">Marital Status</label>
+						<input type="text" id="secondaryInfo.employeeMaritalStatus" name="secondaryInfo.employeeMaritalStatus" required>
+					</td>
+
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Education Information </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="educationInfo.employeeEducationType">Education Type</label>
+						<input type="text" id="educationInfo.employeeEducationType" name="educationInfo.employeeEducationType" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="educationInfo.employeeYearOfPassOut">Y.O.P</label>
+						<input type="text" id="educationInfo.employeeYearOfPassOut" name="educationInfo.employeeYearOfPassOut" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="educationInfo.employeeUniversityName">University</label>
+						<input type="text" id="educationInfo.employeeUniversityName" name="educationInfo.employeeUniversityName" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="educationInfo.employeeInstituteName">Institute</label>
+						<input type="text" id="educationInfo.employeeInstituteName" name="educationInfo.employeeInstituteName" required>
+					</td>
+
+				</tr>
+				<!--===========Second Line============-->
+				<tr>
+					<td>
+						<label for="educationInfo.employeePercentage">Percentage</label>
+						<input type="text" id="educationInfo.employeePercentage" name="educationInfo.employeePercentage" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="educationInfo.employeeSpecialization">Specialization</label>
+						<input type="text" id="educationInfo.employeeSpecialization" name="educationInfo.employeeSpecialization" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="educationInfo.employeeEducationState">State</label>
+						<input type="text" id="educationInfo.employeeEducationState" name="educationInfo.employeeEducationState" required>
+					</td>
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Address Information </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="addressInfo.employeeAddressType">Address Type</label>
+						<input type="text" id="addressInfo.employeeAddressType" name="addressInfo.employeeAddressType" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="addressInfo.employeeDoorNo">Door No.</label>
+						<input type="text" id="addressInfo.employeeDoorNo" name="addressInfo.employeeDoorNo" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="addressInfo.employeeStreet">Street</label>
+						<input type="text" id="addressInfo.employeeStreet" name="addressInfo.employeeStreet" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="addressInfo.employeeCity">City</label>
+						<input type="text" id="addressInfo.employeeCity" name="addressInfo.employeeCity" required>
+					</td>
+
+				</tr>
+				<!--===========Second Line============-->
+				<tr>
+					<td>
+						<label for="addressInfo.employeeState">State</label>
+						<input type="text" id="addressInfo.employeeState" name="addressInfo.employeeState" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="addressInfo.employeePinCode">PIN Code</label>
+						<input type="text" id="addressInfo.employeePinCode" name="addressInfo.employeePinCode" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="addressInfo.employeeLandMark">Land Mark</label>
+						<input type="text" id="addressInfo.employeeLandMark" name="addressInfo.employeeLandMark" required>
+					</td>
+
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Bank Details </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="bankDetails.employeeBankName">Bank Name</label>
+						<input type="text" id="bankDetails.employeeBankName" name="bankDetails.employeeBankName" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="bankDetails.employeeBankAccountNo">Account No.</label>
+						<input type="text" id="bankDetails.employeeBankAccountNo" name="bankDetails.employeeBankAccountNo" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="bankDetails.employeeBankAccountIfscCode">IFSC</label>
+						<input type="text" id="bankDetails.employeeBankAccountIfscCode" name="bankDetails.employeeBankAccountIfscCode" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="bankDetails.employeeBankAccountType">Account Type</label>
+						<input type="text" id="bankDetails.employeeBankAccountType" name="bankDetails.employeeBankAccountType" required>
+					</td>
+
+				</tr>
+				<!--===========Second Line============-->
+				<tr>
+
+					<td>
+						<label for="bankDetails.employeeBankAccountBarnchName">Branch Name</label>
+						<input type="text" id="bankDetails.employeeBankAccountBarnchName" name="bankDetails.employeeBankAccountBarnchName" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="bankDetails.employeeBankAccountBranchState">State</label>
+						<input type="text" id="bankDetails.employeeBankAccountBranchState" name="bankDetails.employeeBankAccountBranchState" required>
+					</td>
+					
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Technical Skills </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;" required>
+				<tr>
+					<td>
+						<label for="skillsInfo.employeeSkillType">Skill Type</label>
+						<input type="text" id="skillsInfo.employeeSkillType" name="skillsInfo.employeeSkillType" required>
+					</td>
+					<td style="width: 240px;"></td>
+					<td>
+						<label for="skillsInfo.employeeSkillRatings">Rate Yourself</label>
+						<input type="text" id="skillsInfo.employeeSkillRatings" name="skillsInfo.employeeSkillRatings" required>
+					</td>
+					<td style="width: 240px;"></td>
+					<td>
+						<label for="skillsInfo.employeeYearOfExperienceOverSkill">Y.O.E</label>
+						<input type="number" id="skillsInfo.employeeYearOfExperienceOverSkill"
+							name="skillsInfo.employeeYearOfExperienceOverSkill" step="0.01" required>
+					</td>
+					
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Experience Details</h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="experienceInfo.employeeCompanyName">Company Name</label>
+						<input type="text" id="experienceInfo.employeeCompanyName" name="experienceInfo.employeeCompanyName" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="experienceInfo.yeeYearOfExperience">Y.O.E</label>
+						<input type="text" id="experienceInfo.employeeYearOfExperience" name="experienceInfo.employeeYearOfExperience" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="experienceInfo.employeeDateOfJoining">D.O.J</label>
+						<input type="text" id="experienceInfo.employeeDateOfJoining" name="experienceInfo.employeeDateOfJoining" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="experienceInfo.employeeDateOfRelieving">D.O.L(DateOfRelieving)</label>
+						<input type="text" id="experienceInfo.employeeDateOfRelieving" name="experienceInfo.employeeDateOfRelieving" required>
+					</td>
+
+				</tr>
+				<tr>
+					<td>
+						<label for="employeeDesignation">Designation</label>
+						<input type="text" id="employeeDesignation" name="employeeDesignation" required>
+					</td>
+					<td class="space"></td>
+					<td>
+						<label for="experienceInfo.employeeCompanyLocation">Location(Company)</label>
+						<input type="text" id="experienceInfo.employeeCompanyLocation" name="experienceInfo.employeeCompanyLocation" required>
+					</td>
+
+				</tr>
+			</table>
+
+			<br>
+			<hr>
+
+			<h3>Contact Details </h3>
+			<table cellspacing="5" cellpadding="5" style="width: 1300px; font-size: 20px;">
+				<tr>
+					<td>
+						<label for="contactInfo.employeeConatctType">Contact Type</label>
+						<input type="text" id="contactInfo.employeeConatctType" name="contactInfo.employeeConatctType" required>
+					</td>
+					<td style="width: 360px;"></td>
+					<td>
+						<label for="contactInfo.employeeConatctNumber">Contact No.</label>
+						<input type="text" id="contactInfo.employeeConatctNumber" name="contactInfo.employeeConatctNumber" required>
+					</td>
+					<td style="width: 360px;"></td>
+				</tr>
+
+			</table>
+		<br><br>
+		<center>
+			<button class="transparent-textfield" style="cursor: pointer; font-size: 22px; background-color: darkcyan; height: 30px;"
+				type="reset"><a>Reset</a></button>
+			<button class="transparent-textfield" style="cursor: pointer; font-size: 22px; background-color: darkgreen; height: 30px;"
+				type="submit"><a>Submit</a></button>
+		</center>
+		</form>
+	</div>
+
+</body>
+
+</html>

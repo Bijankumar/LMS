@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
+
+	<style>
+		nav {
+			display: flex;
+			align-items: center;
+			padding: 10px;
+		}
+
+		a {
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+		}
+
+		button a:hover {
+			background-color: rgb(146, 254, 197);
+			border-radius: 8px;
+			color: darkblue;
+			cursor: pointer;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid rgb(255, 255, 0);
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+
+		.Content {
+			display: flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+
+	<style>
+		/* Left Pannel Styling */
+		.left-panel {
+			width: 80px;
+			background-color: transparent;
+			position: fixed;
+			top: 80px;
+			left: 20px;
+		}
+
+		.left-panel a :hover {
+			background-color: rgb(183, 255, 255);
+			width: 100px;
+			height: 80px;
+			border-radius: 80px;
+		}
+	</style>
+
+	<style>
+		/* Styles for the overlay background */
+		.overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 1;
+		}
+
+		/* Styles for the popup form */
+		.popup {
+			display: none;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-weight: bold;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: rgb(185, 185, 255);
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+			z-index: 2;
+		}
+
+		/* Styles for the close button */
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body
+	style="background-image: url('https://img.freepik.com/free-photo/abstract-smooth-dark-blue-with-black-vignette-studio-well-use-as-backgroundbusiness-reportdigitalweb_1258-57184.jpg?w=1060&t=st=1694774338~exp=1694774938~hmac=84a20ab3048ef98074101b98e4fb6e9a9ca857a51d55ff38a732db0620f48e60'); background-attachment: fixed; background-repeat: no-repeat; background-size: 100%;">
+	<nav>
+		<span><button class="transparent-textfield"><a href="./adminPage">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+		<span>
+			<!-- Global search panel -->
+			<form action="" method="" style="display: flex; align-items: center; margin-left: 500px; ">
+				<input type="text" class="transparent-textfield" name="query" id="search-input"
+					placeholder="Enter your search query">
+				<button style="background-color: rgb(174, 255, 228);" class="transparent-textfield" type="submit"
+					id="search-button">Search</button>
+			</form>
+		</span>
+		<span><button class="transparent-textfield" style="margin-left: 150px;"><a
+					href="/logout">LogOut</a></button></span>
+	</nav>
+	<div class="left-panel">
+		<a href="./requestedEmployees">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set129/20191c9b.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Requests
+		</a>
+		<br><br>
+		<a href="./approvedEmployees">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set76/eaafc3fb.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Employees
+		</a>
+		<br><br>
+		<a href="./getAllMentors">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set60/e5b019f8.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Mentors
+		</a>
+		<br><br>
+		<a href="./getBatchDetails">
+			<img src="https://secure.webtoolhub.com/static/resources/icons/set54/d9a8ad.png"
+				style="width: 70px; height: 50px; border-radius: 70px;"> Batches
+		</a>
+	</div>
+
+	<div class="Content">
+
+		<div style="color: aliceblue; font-style: oblique;">
+			<br><br><br><br><br><br><br>
+			<h1>Opps !!Content Not Available right now !</h1>
+			<h2 style="color: rgb(128, 255, 255);">Click here to create..
+				<button class="transparent-textfield" id="open-popup" style="background-color: rgb(255, 176, 81);">
+					<a>New Batch</a>
+				</button>
+			</h2>
+		</div>
+	</div>
+
+
+
+	<!-- The overlay and popup form -->
+	<div class="overlay" id="overlay"></div>
+	<div class="popup" id="popup">
+		<span class="close-btn" id="close-btn">&times;</span>
+		<center>
+			<h2>Enter Required Fields</h2>
+		</center>
+		<form action="./addNewBatch" method="post">
+			<table cellspacing="5" cellpadding="5">
+				<tr>
+					<td><label style="font-size: 18px;" for="mentorNo">Mentor No </label></td>
+					<td> :</td>
+					<td><input class="transparent-textfield" type="number" id="mentorNo" name="mentorNo"
+							style="font-size: 17px; width: 240px;" required></td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="employeeIds">Employee Ids </label></td>
+					<td> :</td>
+					<td><input class="transparent-textfield" type="text" id="employeeIds" name="employeeIds"
+							style="font-size: 17px; width: 240px;" required></td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="batchName">Batch Name </label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="text" id="batchName" name="batchName"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="batchTechnology">Technology </label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="text" id="batchTechnology" name="batchTechnology"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="batchStartDate">Start Date </label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="date" id="batchStartDate" name="batchStartDate"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="batchEndDate">Ending Date </label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="date" id="batchEndDate" name="batchEndDate"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="batchStatus">Batch Status </label></td>
+					<td> :</td>
+					<td><input class="transparent-textfield" type="text" id="batchStatus" name="batchStatus"
+							style="font-size: 17px; width: 240px;" required></td>
+				</tr>
+			</table>
+			<br>
+			<center>
+				<button class="transparent-textfield" style="cursor: pointer;" type="submit"><a>Create</a></button>
+			</center>
+		</form>
+	</div>
+
+
+	<script>
+		// Get references to the overlay and popup
+		var overlay = document.getElementById('overlay');
+		var popup = document.getElementById('popup');
+
+		// Get references to the open and close buttons
+		var openButton = document.getElementById('open-popup');
+		var closeButton = document.getElementById('close-btn');
+
+		// Open the popup when the open button is clicked
+		openButton.addEventListener('click', function () {
+			overlay.style.display = 'block';
+			popup.style.display = 'block';
+		});
+
+		// Close the popup when the close button is clicked
+		closeButton.addEventListener('click', function () {
+			overlay.style.display = 'none';
+			popup.style.display = 'none';
+		});
+
+		// Close the popup when the overlay is clicked
+		overlay.addEventListener('click', function (event) {
+			if (event.target === overlay) {
+				overlay.style.display = 'none';
+				popup.style.display = 'none';
+			}
+		});
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
+
+	<style>
+		nav {
+			display: flex;
+			align-items: center;
+			padding: 10px;
+		}
+
+		a {
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+		}
+
+		button a:hover {
+			background-color: rgb(146, 254, 197);
+			border-radius: 8px;
+			color: darkblue;
+			cursor: pointer;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid rgb(255, 255, 0);
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+
+		.transparent {
+			color: white;
+			border: 2px solid rgb(255, 255, 0);
+			background: transparent;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+			padding: 8px;
+		}
+
+		/* Left Pannel Styling */
+		.left-panel {
+			width: 80px;
+			background-color: transparent;
+			position: fixed;
+			text-align: center;
+			top: 80px;
+			left: 22px;
+		}
+
+		.left-panel a :hover {
+			background-color: rgb(183, 255, 255);
+			width: 100px;
+			height: 80px;
+			border-radius: 80px;
+		}
+
+		.no-hover {
+			pointer-events: none;
+		}
+	</style>
+	
+	<style>
+		/* Styles for the overlay background */
+		.overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 1;
+		}
+
+		/* Styles for the popup form */
+		.popup {
+			display: none;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			font-weight: bold;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: rgb(185, 185, 255);
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+			z-index: 2;
+		}
+
+		/* Styles for the close button */
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body
+	style="background-image: url('https://img.freepik.com/free-photo/abstract-smooth-dark-blue-with-black-vignette-studio-well-use-as-backgroundbusiness-reportdigitalweb_1258-57184.jpg?w=1060&t=st=1694774338~exp=1694774938~hmac=84a20ab3048ef98074101b98e4fb6e9a9ca857a51d55ff38a732db0620f48e60'); background-attachment: fixed; background-repeat: no-repeat; background-size: 100%;">
+	<nav>
+		<span><button class="transparent-textfield"><a href="./mentorPage">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+		<span>
+			<!-- Global search panel -->
+			<form action="" method="" style="display: flex; align-items: center; margin-left: 490px; ">
+				<input type="text" class="transparent-textfield" name="query" id="search-input"
+					placeholder="Enter your search query">
+				<button style="background-color: rgb(174, 255, 228);" class="transparent-textfield" type="submit"
+					id="search-button">Search</button>
+			</form>
+		</span>
+		<span><button class="transparent-textfield" style="margin-left: 150px;"><a
+					href="/logout">LogOut</a></button></span>
+	</nav>
+	<div class="left-panel">
+		<a href="./mentorPage" class="no-hover">
+			<img src="https://cdn-icons-png.flaticon.com/256/1828/1828673.png" style="width: 42px; height: 40px;">
+			Dashbord
+		</a>
+	</div>
+	<div>
+		<form action="./addAttendance" method="post">
+			<input type="tel" name="employeeNo" class="transparent-textfield "
+				style="right: 250px; position: absolute;top: 92px; font-size: 18px; width: 100px; color: aliceblue;"
+				required>
+			<button class="transparent-textfield" type="submit"
+				style="right: 200px; position: absolute;top: 92px; font-size: 18px; background-color: rgb(18, 132, 175);">
+				<a>+ Attendance</a>
+			</button>
+		</form>
+		<button class="transparent-textfield" id="open-popup"
+			style="right: 55px; position: absolute;top: 92px; font-size: 18px; background-color: rgb(96, 92, 237);">
+			<a>+ Give Ratings</a>
+		</button>
+	</div>
+
+	<div class="requested" style="position: absolute; top: 130px; left: 125px; color: rgb(255, 255, 255);">
+		<table border="4" cellspacing="5" cellpadding="5"
+			style="border-color: rgb(255, 255, 0);text-align: center; width: 1300px;">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>employee ID</th>
+					<th>employee Name </th>
+					<th>Mock Taken </th>
+					<th>Status</th>
+					<th>Attendance</th>
+					<th>Mock Ratings</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Use Thymeleaf to iterate over the list of employees -->
+				<tr th:each="employee : ${employee}">
+					<td th:text="${employee.employeeNo}"></td>
+					<td th:text="${employee.employeeId}"></td>
+					<td th:text="${employee.employeeName}"></td>
+					<td th:text="${employee.employeeMockTaken}"></td>
+					<td th:text="${employee.employeeStatus}"></td>
+					<td th:text="${employee.employeeAttendance}"></td>
+					<td>
+						<img src="https://secure.webtoolhub.com/static/resources/icons/set17/ba4b5f971539.png"
+							style="width: 30px; height: 30px; cursor: pointer;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+<!-- The overlay and popup form -->
+	<div class="overlay" id="overlay"></div>
+	<div class="popup" id="popup">
+		<span class="close-btn" id="close-btn">&times;</span>
+		<center>
+			<h2>Enter Required Fields</h2>
+		</center>
+		<form action="./giveMockRating" method="post">
+			<table cellspacing="5" cellpadding="5">
+				<tr>
+					<td><label style="font-size: 18px;" for="employeeNo">Employee No </label></td>
+					<td> :</td>
+					<td><input class="transparent-textfield" type="number" id="employeeNo" name="employeeNo"
+							style="font-size: 17px; width: 240px;" required></td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="mockType">Mock Type </label></td>
+					<td> :</td>
+					<td><input class="transparent-textfield" type="text" id="mockType" name="mockType"
+							style="font-size: 17px; width: 240px;" required></td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="mockTakenBy">Mock Taken By </label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="text" id="mockTakenBy" name="mockTakenBy"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="mockTechnology">Technology </label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="text" id="mockTechnology" name="mockTechnology"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="practicalKnoledge">Practical Knoledge(Out of 100) </label>
+					</td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="tel" id="practicalKnoledge" name="practicalKnoledge"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="technicalKnoledge">Theoritical Knoledge(Out of 100)
+						</label></td>
+					<td> :</td>
+					<td>
+						<input class="transparent-textfield" type="tel" id="technicalKnoledge" name="technicalKnoledge"
+							style="font-size: 17px; width: 240px;" required>
+					</td>
+				</tr>
+				<tr>
+					<td><label style="font-size: 18px;" for="overAllFeedBack">Overall
+							FeedBack((Practical+Theoritical)/2)</label></td>
+					<td> :</td>
+					<td>
+						<select style="width: 240px; font-size: 17px;" class="transparent" id="overAllFeedBack"
+							name="overAllFeedBack">
+							<option style="color: rgba(153, 155, 155, 0.973);" value="">Select</option>
+							<option style="color: darkturquoise;" value="Excelent(90 Above)">Excelent(90 Above)
+							</option>
+							<option style="color: darkturquoise;" value="Good(80-89)">Good(80-89)</option>
+							<option style="color: darkturquoise;" value="Above Average(70-79)">Above Average(70-79)
+							</option>
+							<option style="color: darkturquoise;" value="Average(60-69)">Average(60-69)</option>
+							<option style="color: darkturquoise;" value="Below Average(50-59)">Below Average(50-59)
+							</option>
+						</select>
+					</td>
+				</tr>
+				<!--<tr>
+					<td><label style="font-size: 18px;" for="overAllFeedBack">Overall
+							FeedBack((Practical+Theoritical)/2)</label></td>
+					<td> :</td>
+					<td><input class="transparent-textfield" type="text" id="overAllFeedBack" name="overAllFeedBack"
+							style="font-size: 17px; width: 240px;" required></td>
+				</tr>-->
+				<tr>
+					<td><label style="font-size: 18px;" for="detailedFeedBack">Detailed Feedback</label></td>
+					<td> :</td>
+					<td>
+						<textarea class="transparent-textfield" type="text"  name="detailedFeedBack" id="detailedFeedBack" style="font-size: 17px; width: 240px;"></textarea>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<center>
+				<button class="transparent-textfield" style="cursor: pointer;" type="submit"><a>Submit</a></button>
+			</center>
+		</form>
+	</div>
+
+
+	<script>
+		// Get references to the overlay and popup
+		var overlay = document.getElementById('overlay');
+		var popup = document.getElementById('popup');
+
+		// Get references to the open and close buttons
+		var openButton = document.getElementById('open-popup');
+		var closeButton = document.getElementById('close-btn');
+
+		// Open the popup when the open button is clicked
+		openButton.addEventListener('click', function () {
+			overlay.style.display = 'block';
+			popup.style.display = 'block';
+		});
+
+		// Close the popup when the close button is clicked
+		closeButton.addEventListener('click', function () {
+			overlay.style.display = 'none';
+			popup.style.display = 'none';
+		});
+
+		// Close the popup when the overlay is clicked
+		overlay.addEventListener('click', function (event) {
+			if (event.target === overlay) {
+				overlay.style.display = 'none';
+				popup.style.display = 'none';
+			}
+		});
+	</script>
+
+
+</body>
+
+</html>

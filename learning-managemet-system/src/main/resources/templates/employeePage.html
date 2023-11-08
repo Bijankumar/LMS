@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home Page</title>
+
+	<style>
+		nav {
+			background-color: rgb(0, 0, 91);
+			position: fixed;
+			display: flex;
+			align-items: center;
+			padding: 10px;
+		}
+
+		a {
+			color: rgb(255, 255, 255);
+			text-decoration: none;
+		}
+
+		button a:hover {
+			background-color: rgb(128, 255, 0);
+			border-radius: 8px;
+			color: darkblue;
+			cursor: pointer;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid rgb(255, 255, 255);
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+
+		.space {
+			width: 50px;
+		}
+	</style>
+
+
+	<style>
+		/* Left Pannel Styling */
+		.left-panel {
+			width: 80px;
+			background-color: transparent;
+			position: fixed;
+			top: 80px;
+			left: 20px;
+			text-align: center;
+		}
+
+		.left-panel a :hover {
+			background-color: rgb(183, 255, 255);
+			width: 100px;
+			height: 80px;
+			border-radius: 80px;
+		}
+	</style>
+
+</head>
+
+<body
+	style="background-image: url('https://wallpaperaccess.com/full/9162039.jpg'); background-attachment: fixed; background-repeat: no-repeat; background-size: 100%;">
+	<nav>
+		<span><button class="transparent-textfield"><a href="./employeePage">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+		<span>
+			<!-- Global search panel -->
+			<form action="" method="" style="display: flex; align-items: center; margin-left: 400px; ">
+				<input type="text" class="transparent-textfield" name="query" id="search-input"
+					placeholder="Enter your search query">
+				<button style="background-color: rgb(174, 255, 228);" class="transparent-textfield" type="submit"
+					id="search-button">Search</button>
+			</form>
+		</span>
+		<span><button class="transparent-textfield" style="margin-left: 220px;"><a
+					href="/logout">LogOut</a></button></span>
+	</nav>
+	<div class="left-panel">
+		<a href="#">
+			<img src="https://cdn-icons-png.flaticon.com/256/1828/1828673.png" style="width: 50px; height: 45px; pointer-events: none;">
+			Dashbord
+		</a>
+	</div>
+
+
+	<div style="font-size: 17px; position: absolute; top: 105px; left: 125px; color: rgb(255, 255, 255);">
+		<h3>Primary Information </h3>
+		<table cellspacing="5" cellpadding="5" style="width: 1300px;">
+
+			<tr>
+				<td>Employee Id </td>
+				<td>:</td>
+				<td>[[${employee.employeeId}]]</td>
+
+				<td class="space"></td>
+
+				<td>Employee Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeName}]]</td>
+
+				<td class="space"></td>
+
+				<td>Date Of Birth </td>
+				<td>:</td>
+				<td>[[${employee.employeeDateOfBirth}]]</td>
+
+				<td class="space"></td>
+
+				<td>Date Of Joining </td>
+				<td>:</td>
+				<td>[[${employee.employeeDateOfJoining}]]</td>
+			</tr>
+			<!--===========Second Line============-->
+			<tr>
+				<td>Blood Group </td>
+				<td>:</td>
+				<td>[[${employee.employeeBloodGroup}]]</td>
+
+				<td class="space"></td>
+
+				<td>Designation </td>
+				<td>:</td>
+				<td>[[${employee.employeeDesignation}]]</td>
+
+				<td class="space"></td>
+
+				<td>Gender </td>
+				<td>:</td>
+				<td>[[${employee.employeeGender}]]</td>
+
+				<td class="space"></td>
+
+				<td>Nationality </td>
+				<td>:</td>
+				<td>[[${employee.employeeNationality}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Secondary Information </h3>
+		<table>
+			<tr>
+				<td>PAN No </td>
+				<td>:</td>
+				<td>[[${employee.employeePanNumber}]]</td>
+
+				<td class="space"></td>
+
+				<td>Aadhar No </td>
+				<td>:</td>
+				<td>[[${employee.employeeAdharNumber}]]</td>
+
+				<td class="space"></td>
+
+				<td>Father Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeFatherName}]]</td>
+
+				<td class="space"></td>
+
+				<td>Mother Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeMotherName}]]</td>
+			</tr>
+			<!--===========Second Line============-->
+			<tr>
+				<td>Spouse Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeSpouseName}]]</td>
+
+				<td></td>
+
+				<td>Passport No </td>
+				<td>:</td>
+				<td>[[${employee.employeePassportNumber}]]</td>
+
+				<td class="space"></td>
+
+				<td>Marital Status </td>
+				<td>:</td>
+				<td>[[${employee.employeePassportNumber}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Education Information </h3>
+		<table>
+			<tr>
+				<td>Education Type </td>
+				<td>:</td>
+				<td>[[${employee.employeeEducationType}]]</td>
+
+				<td class="space"></td>
+
+				<td>Year of Passing </td>
+				<td>:</td>
+				<td>[[${employee.employeeYearOfPassOut}]]</td>
+
+				<td class="space"></td>
+
+				<td>Percentage </td>
+				<td>:</td>
+				<td>[[${employee.employeePercentage}]]</td>
+
+				<td class="space"></td>
+
+				<td>University Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeUniversityName}]]</td>
+			</tr>
+			<!--===========Second Line============-->
+			<tr>
+				<td>Institute Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeInstituteName}]]</td>
+
+				<td></td>
+
+				<td>Specialization </td>
+				<td>:</td>
+				<td>[[${employee.employeeSpecialization}]]</td>
+
+				<td class="space"></td>
+
+				<td>State </td>
+				<td>:</td>
+				<td>[[${employee.employeeEducationState}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Address Information </h3>
+		<table>
+			<tr>
+				<td>Address Type </td>
+				<td>:</td>
+				<td>[[${employee.employeeAddressType}]]</td>
+
+				<td class="space"></td>
+
+				<td>Door No </td>
+				<td>:</td>
+				<td>[[${employee.employeeDoorNo}]]</td>
+
+				<td class="space"></td>
+
+				<td>Street </td>
+				<td>:</td>
+				<td>[[${employee.employeeStreet}]]</td>
+
+				<td class="space"></td>
+
+				<td>Locality </td>
+				<td>:</td>
+				<td>[[${employee.employeeLandMark}]]</td>
+			</tr>
+			<!--===========Second Line============-->
+			<tr>
+				<td>City </td>
+				<td>:</td>
+				<td>[[${employee.employeeCity}]]</td>
+
+				<td></td>
+
+				<td>State </td>
+				<td>:</td>
+				<td>[[${employee.employeeState}]]</td>
+
+				<td class="space"></td>
+
+				<td>PinCode </td>
+				<td>:</td>
+				<td>[[${employee.employeePinCode}]]</td>
+
+				<td class="space"></td>
+
+				<td>Land Mark </td>
+				<td>:</td>
+				<td>[[${employee.employeeLandMark}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Bank Details </h3>
+		<table>
+			<tr>
+				<td>Account No </td>
+				<td>:</td>
+				<td>[[${employee.employeeBankAccountNo}]]</td>
+
+				<td class="space"></td>
+
+				<td>Bank Name </td>
+				<td>:</td>
+				<td>[[${employee.employeeBankName}]]</td>
+
+				<td class="space"></td>
+
+				<td>Bank Type </td>
+				<td>:</td>
+				<td>[[${employee.employeeBankAccountType}]]</td>
+
+				<td class="space"></td>
+
+				<td>IFSC Code </td>
+				<td>:</td>
+				<td>[[${employee.employeeBankAccountIfscCode}]]</td>
+			</tr>
+			<!--===========Second Line============-->
+			<tr>
+				<td>Branch </td>
+				<td>:</td>
+				<td>[[${employee.employeeBankAccountBarnchName}]]</td>
+
+				<td></td>
+
+				<td>State </td>
+				<td>:</td>
+				<td>[[${employee.employeeBankAccountBranchState}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Technical Skills </h3>
+		<table>
+			<tr>
+				<td>Skill Type </td>
+				<td>:</td>
+				<td>[[${employee.employeeSkillType}]]</td>
+
+				<td class="space"></td>
+
+				<td>Skill Ratings </td>
+				<td>:</td>
+				<td>[[${employee.employeeSkillRatings}]]</td>
+
+				<td class="space"></td>
+
+				<td>Year Of Experience(Over Skill)</td>
+				<td>:</td>
+				<td>[[${employee.employeeYearOfExperinceOverSkill}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Experience Details</h3>
+		<table>
+			<tr>
+				<td>Date Of Joining </td>
+				<td>:</td>
+				<td>[[${employee.employeeDateOfJoining}]]</td>
+
+				<td class="space"></td>
+
+				<td>Year Of Experience </td>
+				<td>:</td>
+				<td>[[${employee.employeeYearOfExperience}]]</td>
+
+				<td class="space"></td>
+
+				<td>Company Name</td>
+				<td>:</td>
+				<td>[[${employee.employeeCompnyName}]]</td>
+
+				<td class="space"></td>
+
+				<td>Designation</td>
+				<td>:</td>
+				<td>[[${employee.employeeDesignation}]]</td>
+			</tr>
+		</table>
+
+		<br>
+		<hr>
+
+		<h3>Contact Details </h3>
+		<table>
+			<tr>
+				<td>Contact Type </td>
+				<td>:</td>
+				<td>[[${employee.employeeConatctType}]]</td>
+
+				<td class="space"></td>
+
+				<td>Contact Number </td>
+				<td>:</td>
+				<td>[[${employee.employeeConatctNumber}]]</td>
+			</tr>
+
+		</table>
+		<br><br><br>
+	</div>
+
+</body>
+
+</html>

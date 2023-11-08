@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title> Registration Form </title>
+	<link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2018/05/21/23/32/education-3420039_640.png" type="image/x-icon">
+	<style>
+		.content {
+			color: blue;
+			font-size: 18px;
+			font-weight: normal;
+			border-radius: 10px;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid blue;
+			color: green;
+			font-size: 15px;
+			border-radius: 10px;
+			padding: 6px;
+		}
+	</style>
+</head>
+
+<body style="background-image: url('https://as1.ftcdn.net/v2/jpg/02/17/26/82/1000_F_217268230_oP65BBywY7Hdlf5cbJRwWzzj37PUupvZ.jpg'); background-size:1600px; background-attachment: fixed; background-repeat: no-repeat;">
+	<div class="content">
+		<fieldset style="border: 4px solid orange; width: 600px; border-radius: 10px">
+			<legend style="text-align: center;">Admin Registration Form</legend>
+			<form action="./adminRegister" method="post">
+				<table>
+					<tr>
+						<td><label for="employeeName"> Employee Name :</label></td>
+						<td><input type="text" class="transparent-textfield" name="employeeName" id="employeeName"
+								placeholder="Enter Your Full Name"></td>
+					</tr>
+
+					<tr>
+						<td><label for="employeePhoneNo">Employee Phone :</label></td>
+						<td><input type="tel" class="transparent-textfield" name="employeePhoneNo" id="employeePhoneNo"
+								placeholder="Enter Your Number"></td>
+					</tr>
+
+					<tr>
+						<td><label for="employeeEmail"> Employee Email :</label></td>
+						<td><input type="email" class="transparent-textfield" name="employeeEmail" id="employeeEmail"
+								placeholder="Enter Email "></td>
+					</tr>
+
+					<tr>
+						<td><label for="employeeDept"> Employee Dept :</label></td>
+						<td><input type="text" class="transparent-textfield" name="employeeDept" id="employeeDept"
+								placeholder="Enter Dept Name"></td>
+					</tr>
+
+					<tr>
+						<td><label for="employeeRole"> Employee Role :</label></td>
+						<td><input type="text" class="transparent-textfield" name="employeeRole" id="employeeRole"
+								placeholder="Enter Role Name"></td>
+					</tr>
+
+					<tr>
+						<td><label for="userName">User Name :</label></td>
+						<td><input type="text" class="transparent-textfield" name="userName" id="userName"
+								placeholder="Enter login userName"></td>
+					</tr>
+
+				</table>
+				<br>
+				<center>
+					<input type="button" style="width: 200px; border: 3px solid green;" class="transparent-textfield" value="Cancel">
+					<input type="submit" style="width: 200px; border: 3px solid yellow; " class="transparent-textfield" value="Submit">
+				</center>
+			</form>
+		</fieldset>
+	</div>
+</body>
+
+</html>
